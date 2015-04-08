@@ -18,14 +18,10 @@ public class App {
 
 		while (true) {
 			String dados_in[] = input.nextLine().split(" ");
-
 			if (dados_in[0].isEmpty() || dados_in[1].isEmpty())
 				break;
-
 			listaProcessos.add(new Processo(Integer.parseInt(dados_in[0]), Integer.parseInt(dados_in[1])));
 		}
-		
-//		System.out.println(listaProcessos.toString());
 		
         FCFS fcfs = new FCFS(listaProcessos);
         fcfs.printMetricas();

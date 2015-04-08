@@ -1,6 +1,7 @@
 package so.escalonador.uepb;
 
 import static java.lang.String.format;
+
 import java.util.List;
 
 /**
@@ -9,34 +10,43 @@ import java.util.List;
  */
 public class Escalonador {
 
-    private float retornoMedio;
-    private float respostaMedio;
-    private float esperaMedio;
+    private double retornoMedio;
+    private double respostaMedio;
+    private double esperaMedio;
 
-    public float getRetornoMedio() {
+    public double getRetornoMedio() {
         return retornoMedio;
     }
 
-    public void setRetornoMedio(float retornoMedio) {
+    public void setRetornoMedio(double retornoMedio) {
         this.retornoMedio = retornoMedio;
     }
 
-    public float getRespostaMedio() {
+    public double getRespostaMedio() {
         return respostaMedio;
     }
 
-    public void setRespostaMedio(float respostaMedio) {
+    public void setRespostaMedio(double respostaMedio) {
         this.respostaMedio = respostaMedio;
     }
 
-    public float getEsperaMedio() {
+    public double getEsperaMedio() {
         return esperaMedio;
     }
 
-    public void setEsperaMedio(float esperaMedio) {
+    public void setEsperaMedio(double esperaMedio) {
         this.esperaMedio = esperaMedio;
     }
-
+    
+    public int tempoChegadaMinimo(List<Processo> processos) {
+    	int min = Integer.MAX_VALUE;
+    	for (Processo p : processos) {
+			if(p.getTempoChegada() < min)
+				min = p.getTempoChegada();
+		}
+    	return min;
+    }
+    
     /**
      * Obter o total de processos na lista.
      *
@@ -54,6 +64,8 @@ public class Escalonador {
      * @param siglaEscalonador
      */
     public void printMetricas(String siglaEscalonador) {
-        System.out.println(format("%s: %.1f %.1f %.1f", siglaEscalonador, getRetornoMedio(), getEsperaMedio(), getRespostaMedio()));
+        System.out.println(format("%s: %.1f %.1f %.1f", siglaEscalonador, getRetornoMedio(), getRespostaMedio(), getEsperaMedio()));
     }
+    
+    
 }

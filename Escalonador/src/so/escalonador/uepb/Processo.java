@@ -1,5 +1,6 @@
 package so.escalonador.uepb;
 
+
 /**
  *
  * @author Douglas, Thiago e Joanes
@@ -39,10 +40,9 @@ public class Processo implements Comparable<Processo> {
     public void setDuracaoRestante(int duracaoRestante) {
         this.duracaoRestante = duracaoRestante;
     }
-
     
     /**
-     * Ordena a lista de acordo com a duração
+     * Ordena a lista de acordo com a duraï¿½ï¿½o
      * @param Processo
      */
     public int compareTo(Processo p) {
