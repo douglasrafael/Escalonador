@@ -42,7 +42,8 @@ public class SJF extends Escalonador {
      * Ordena a lista de acordo com o tempo de chegada e duração do processo e prepara uma lista de prontos
      * @param p
      */
-	private void preparaListaProntos(List<Processo> p) {
+	private void preparaListaProntos(List<Processo> processos) {
+		List<Processo> p = new ArrayList<Processo>(processos);
 		int sumRetorno = 0, menor = 0, pivo = 0;
 		Collections.sort(p);
 		listaProntos.add(p.remove(0));
