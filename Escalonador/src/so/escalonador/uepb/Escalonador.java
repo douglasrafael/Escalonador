@@ -38,6 +38,11 @@ public class Escalonador {
         this.esperaMedio = esperaMedio;
     }
     
+    /**
+     * Retorna o tempo de chegada mínimo dentre todos os processos
+     * @param processos
+     * @return
+     */
     public int tempoChegadaMinimo(List<Processo> processos) {
     	int min = Integer.MAX_VALUE;
     	for (Processo p : processos) {
@@ -64,7 +69,7 @@ public class Escalonador {
      * @param siglaEscalonador
      */
     public void printMetricas(String siglaEscalonador) {
-        System.out.println(format("%s: %.1f %.1f %.1f", siglaEscalonador, getRetornoMedio(), getRespostaMedio(), getEsperaMedio()));
+        System.out.println(format("%s %.1f %.1f %.1f", siglaEscalonador, getRetornoMedio(), getRespostaMedio(), getEsperaMedio()));
     }
     
     

@@ -24,7 +24,9 @@ public class App {
 		}
 		
         FCFS fcfs = new FCFS(listaProcessos);
+        SJF sjf = new SJF(listaProcessos);
         fcfs.printMetricas();
+        sjf.printMetricas();
 	}
 
 }
