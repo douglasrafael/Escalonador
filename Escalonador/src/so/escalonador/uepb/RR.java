@@ -13,10 +13,12 @@ public class RR extends Escalonador {
     private static List<Processo> listaProntos;
 
     public RR(List<Processo> processos) {
-        int tempoRetorno = 0, retorno = 0, tempoResposta = 0, tempoEspera = 0;
+        int tempoRetorno = 0, tempoResposta = 0, tempoEspera = 0;
         int totalProcessos = super.getTotalProcessos(processos);
+        int retorno = tempoChegadaMinimo(processos);
         listaProntos = new ArrayList<Processo>(processos);
 
+        System.out.println("LISTA" + processos);
         // enquanto houver processos
         while (!listaProntos.isEmpty()) {
             Processo p = listaProntos.remove(0);
@@ -30,22 +32,23 @@ public class RR extends Escalonador {
             } else {
                 retorno += p.getDuracaoRestante();
             }
+            System.out.println("RETORNO: " + retorno);
 
             /**
-             * Verifica se o processo foi finalizado (se não estar na lista de
-             * prontos). Se finalizado, é calculado as métricas
+             * Verifica se o processo foi finalizado (se não estar na lista de prontos). 
+             * Se finalizado, é calculado as métricas
              */
             if (!listaProntos.contains(p)) {
-                tempoRetorno += retorno; // soma todos os tempos de retorno
+                tempoRetorno += retorno;
                 tempoResposta += (retorno - p.getTempoChegada()); // soma todos os tempos de resposta
-                tempoEspera += (retorno - p.getTempoChegada() - p.getDuracao()); // soma todos os tempos de espera
+                tempoEspera += (retorno - p.getTempoChegada() - p.getDuracao()); // TEP = (RP - CP - TAM)
             }
-
-            // seta os tempos médios
-            super.setRetornoMedio((float) tempoRetorno / totalProcessos);
-            super.setRespostaMedio((float) tempoResposta / totalProcessos);
-            super.setEsperaMedio((float) tempoEspera / totalProcessos);
         }
+
+        // seta os tempos médios
+        super.setRetornoMedio((float) tempoRetorno / totalProcessos);
+        super.setRespostaMedio((float) tempoResposta / totalProcessos);
+        super.setEsperaMedio((float) tempoEspera / totalProcessos);
     }
 
     /**
