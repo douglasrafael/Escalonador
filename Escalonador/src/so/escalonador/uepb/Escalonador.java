@@ -71,6 +71,4 @@ public class Escalonador {
     public void printMetricas(String siglaEscalonador) {
         System.out.println(format("%s %.1f %.1f %.1f", siglaEscalonador, getRetornoMedio(), getRespostaMedio(), getEsperaMedio()));
     }
-    
-    
 }

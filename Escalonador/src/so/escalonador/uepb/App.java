@@ -13,13 +13,14 @@ public class App {
 	public static List<Processo> listaProcessos = new ArrayList<Processo>();
 
 	public static void main(String[] args) {
+		int id = 0;
 		while (true) {
 			String dados_in[] = input.nextLine().split(" ");
 			if (dados_in[0].isEmpty() || dados_in[1].isEmpty()) {
 				input.close();
 				break;
 			}
-			listaProcessos.add(new Processo(Integer.parseInt(dados_in[0]), Integer.parseInt(dados_in[1])));
+			listaProcessos.add(new Processo(++id, Integer.parseInt(dados_in[0]), Integer.parseInt(dados_in[1])));
 		}
 		
         FCFS fcfs = new FCFS(listaProcessos);

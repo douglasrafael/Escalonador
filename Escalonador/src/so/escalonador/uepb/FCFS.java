@@ -26,12 +26,12 @@ public class FCFS extends Escalonador {
 			int totalProcessos = processos.size();
 			int retorno = tempoChegadaMinimo(processos);
 			
-			// enquanto existir processos na fila
+			// enquanto existir processos na fila de prontos
 			while (!listaProntos.isEmpty()) {
 				Processo p = listaProntos.remove(0); // obtem o primeiro processo da fila e remove
 				retorno += p.getDuracao();
 				tempoRetorno += (retorno - p.getTempoChegada());
-				tempoEspera += (retorno - p.getTempoChegada() - p.getDuracao()); // TEP = (RP - CP - TAM)
+				tempoEspera += (retorno - p.getTempoChegada() - p.getDuracao()); // TEP = (REP - CHP - TAM)
 			}
 			tempoResposta = tempoEspera; // Para o FCFS o tempo de resposta é igual ao tempo de espera
 

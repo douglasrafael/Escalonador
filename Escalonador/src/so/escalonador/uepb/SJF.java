@@ -25,7 +25,7 @@ public class SJF extends Escalonador {
 				Processo p = listaProntos.remove(0); // obtem o primeiro processo da fila e remove
 				retorno += p.getDuracao();
 				tempoRetorno += (retorno - p.getTempoChegada());
-				tempoEspera += (retorno - p.getTempoChegada() - p.getDuracao()); // TEP = (RP - CP - TAM)
+				tempoEspera += (retorno - p.getTempoChegada() - p.getDuracao()); // TEP = (REP - CHP - TAM)
 			}
 			tempoResposta = tempoEspera; // Para o SJF o tempo de resposta é igual ao tempo de espera
 
@@ -45,6 +45,7 @@ public class SJF extends Escalonador {
 	private void preparaListaProntos(List<Processo> processos) {
 		List<Processo> p = new ArrayList<Processo>(processos);
 		int sumRetorno = 0, menor = 0, pivo = 0;
+		// Ordena a lista para garantir a hierarquia de chegada
 		Collections.sort(p);
 		listaProntos.add(p.remove(0));
 		sumRetorno = listaProntos.get(0).getDuracao();

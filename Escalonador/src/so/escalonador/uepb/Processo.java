@@ -6,16 +6,26 @@ package so.escalonador.uepb;
  */
 public class Processo implements Comparable<Processo> {
 
+	private int id;
 	private int tempoChegada;
 	private int duracao;
 	private int duracaoRestante;
 
-	public Processo(int tempoChegada, int duracao) {
+	public Processo(int id, int tempoChegada, int duracao) {
+		this.id = id;
 		this.tempoChegada = tempoChegada;
 		this.duracao = duracao;
 		this.duracaoRestante = duracao;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	public int getTempoChegada() {
 		return tempoChegada;
 	}
@@ -59,6 +69,7 @@ public class Processo implements Comparable<Processo> {
 
 	@Override
 	public String toString() {
-		return getTempoChegada() + " - " + getDuracao();
+		return "P" + getId() + "(" +getTempoChegada() + " "+ getDuracao() + ")";
 	}
+
 }
